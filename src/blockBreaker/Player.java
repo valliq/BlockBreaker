@@ -1,10 +1,12 @@
 package blockBreaker;
 
+import blockBreaker.Level;
+
 public class Player {
-	private String name;
+	private String name="unnamed";
 	private int score = 0;
 	private int lives = 3;
-	private Level level;
+	private Level level = Level.Easy;
 
 	public void setName(String name) {
 		this.name = name;
