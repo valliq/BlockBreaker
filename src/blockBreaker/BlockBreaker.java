@@ -2,19 +2,13 @@ package blockBreaker;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
-
 import javax.swing.*;
 
 import blockBreaker.Player;
@@ -52,13 +46,33 @@ public class BlockBreaker implements ActionListener, KeyListener
 		scorePanel.add(scoreLabel,BorderLayout.WEST);
 		scorePanel.add(livesLabel,BorderLayout.EAST);
 		
+		// add blocks
+		int x=10, y=10;
+			
+		for (int j=0; j<10; j++)
+		{
+			for (int i=0; i<12; i++)
+			{
+				JPanel block = new JPanel();
+				block.setBackground(Color.GREEN);
+				block.setSize(40,10);
+				block.setLocation(x,y);
+				jframe.add(block,BorderLayout.SOUTH);
+				
+				x+=50; // increase horizontal position
+			}
+				x=10; // reset horizontal position
+				y+=20; // increase vertical position
+		}
+		
+		// add table panel
 		tablePanel = new JPanel();
 		tablePanel.setBackground(Color.RED);
-		tablePanel.setSize(50,10);
+		tablePanel.setSize(70,10);
 		tablePanel.setLocation(300, 400);
-		
 		jframe.add(tablePanel,BorderLayout.SOUTH);
 		
+		// add the score panel
 		jframe.getContentPane().add(scorePanel, BorderLayout.SOUTH);
 		
 		jframe.getContentPane().setBackground( Color.BLUE);
