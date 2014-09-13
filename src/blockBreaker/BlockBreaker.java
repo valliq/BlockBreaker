@@ -2,8 +2,10 @@ package blockBreaker;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +24,9 @@ public class BlockBreaker implements ActionListener, KeyListener
 	public static BlockBreaker game;
 	public Player player;
 	public JFrame jframe;
+	public JPanel tablePanel;
 	public Dimension dim;
+	public int tablePosition = 300;
 	
 	public void GamePanel()
 	{
@@ -39,18 +43,26 @@ public class BlockBreaker implements ActionListener, KeyListener
 		jframe.addKeyListener(this);
 		
 		JPanel scorePanel = new JPanel();
-		JLabel scoreLabel = new JLabel("SCORE: "+player.getScore());
-		JLabel livesLabel = new JLabel("USERNAME: "+player.getName()+" LIVES: "+player.getLives());
+		JLabel scoreLabel = new JLabel("("+player.getName()+") SCORE: "+player.getScore());
+		JLabel livesLabel = new JLabel("LIVES: "+player.getLives());
 		
 		scorePanel.setPreferredSize(new Dimension(640, 30));
 		scorePanel.setBackground(Color.decode("#1691D9"));
 		
 		scorePanel.add(scoreLabel,BorderLayout.WEST);
 		scorePanel.add(livesLabel,BorderLayout.EAST);
-
+		
+		tablePanel = new JPanel();
+		tablePanel.setBackground(Color.RED);
+		tablePanel.setSize(50,10);
+		tablePanel.setLocation(300, 400);
+		
+		jframe.add(tablePanel,BorderLayout.SOUTH);
+		
 		jframe.getContentPane().add(scorePanel, BorderLayout.SOUTH);
 		
 		jframe.getContentPane().setBackground( Color.BLUE);
+
 		
 	}
 
@@ -101,7 +113,30 @@ public class BlockBreaker implements ActionListener, KeyListener
 	public void keyTyped(KeyEvent e) {}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {}
+	public void keyPressed(KeyEvent e) 
+	{
+		int i = e.getKeyCode();
+		
+		if (i == KeyEvent.VK_LEFT)
+		{
+			// go left
+			tablePanel.setLocation(tablePosition-10,400);
+			tablePosition-=10;
+		}
+		
+		if (i == KeyEvent.VK_RIGHT)
+		{
+			// go right
+			tablePanel.setLocation(tablePosition+10,400);
+			tablePosition+=10;
+		}
+
+		/*if (i == KeyEvent.VK_SPACE)
+			if (over)
+				//startGame();
+			else
+				paused = !paused;*/
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {}
