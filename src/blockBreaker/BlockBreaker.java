@@ -39,8 +39,8 @@ public class BlockBreaker implements ActionListener, KeyListener
 		jframe.addKeyListener(this);
 		
 		JPanel scorePanel = new JPanel();
-		JLabel scoreLabel = new JLabel("SCORE: 0");
-		JLabel livesLabel = new JLabel("LIVES: "+player.getLives());
+		JLabel scoreLabel = new JLabel("SCORE: "+player.getScore());
+		JLabel livesLabel = new JLabel("USERNAME: "+player.getName()+" LIVES: "+player.getLives());
 		
 		scorePanel.setPreferredSize(new Dimension(640, 30));
 		scorePanel.setBackground(Color.decode("#1691D9"));
@@ -87,9 +87,9 @@ public class BlockBreaker implements ActionListener, KeyListener
 
 		// TODO
 		
-		Scanner input = new Scanner(System.in);
+		//Scanner input = new Scanner(System.in);
 		
-		startGame();
+		//startGame();
 		
 
 	}
