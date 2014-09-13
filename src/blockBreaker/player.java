@@ -1,6 +1,6 @@
 package blockBreaker;
 
-public class player {
+public class Player {
 	private String name;
 	private int score = 0;
 	private int lives = 3;
@@ -8,10 +8,14 @@ public class player {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
-	}	
+	}
+	
+	public Integer getLives() {
+		return lives;
+	}
 
 	public int getScore() {
 		return score;
