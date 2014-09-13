@@ -75,9 +75,7 @@ public class BlockBreaker implements ActionListener, KeyListener
 		// add the score panel
 		jframe.getContentPane().add(scorePanel, BorderLayout.SOUTH);
 		
-		jframe.getContentPane().setBackground( Color.BLUE);
-
-		
+		jframe.getContentPane().setBackground( Color.BLUE);	
 	}
 
 	//Get user name and level
@@ -93,16 +91,12 @@ public class BlockBreaker implements ActionListener, KeyListener
 		System.out.println("3 - hard");
 		int levelNumber = input.nextInt();
 		player.setLevel(levelNumber);
-
-		
 	}
 	
 	public static void main(String[] args) 
 	{
-
 		game = new BlockBreaker();
-		
-		
+
         javax.swing.SwingUtilities.invokeLater(new Runnable() 
         {
             public void run() 
@@ -117,7 +111,6 @@ public class BlockBreaker implements ActionListener, KeyListener
 		
 		//startGame();
 		
-
 	}
 	
 	@Override
@@ -135,14 +128,15 @@ public class BlockBreaker implements ActionListener, KeyListener
 		{
 			// go left
 			tablePanel.setLocation(tablePosition-10,400);
-			tablePosition-=10;
+			if (tablePosition > 0) tablePosition-=10;
 		}
 		
 		if (i == KeyEvent.VK_RIGHT)
 		{
 			// go right
 			tablePanel.setLocation(tablePosition+10,400);
-			tablePosition+=10;
+			if (tablePosition <= 550) tablePosition+=10;
+			
 		}
 
 		/*if (i == KeyEvent.VK_SPACE)
