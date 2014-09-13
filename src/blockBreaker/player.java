@@ -1,31 +1,31 @@
 package blockBreaker;
 
 public class player {
-	private String Name;
-	private int Score = 0;
-	private int Lives = 5;
-
-	public String getName() {
-		return Name;
-	}
+	private String name;
+	private int score = 0;
+	private int lives = 3;
 
 	public void setName(String name) {
-		this.Name = name;
+		this.name = name;
 	}
+	
+	public String getName() {
+		return name;
+	}	
 
 	public int getScore() {
-		return Score;
+		return score;
 	}
 
-	public void setScore() {
-		this.Score += 1;
+	public void scorePlus() {
+		this.score += 1;
 	}
 
 	public void addLive() {
-		this.Lives += 1;
+		this.lives += 1;
 	}
 
 	public void removeLive() {
-		this.Lives -= 1;
+		this.lives -= 1;
 	}
 }
