@@ -1,3 +1,0 @@
-# BlockBreaker
-
-by Team Huckleberry
