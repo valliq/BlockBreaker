@@ -1,7 +1,6 @@
 package blockBreaker;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -12,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.swing.*;
 
@@ -53,9 +53,27 @@ public class BlockBreaker implements ActionListener, KeyListener
 		jframe.getContentPane().setBackground( Color.BLUE);
 		
 	}
+
+	//Get user name and level
+	public static void startGame()
+	{
+		Scanner input = new Scanner(System.in);
+		Player player = new Player();
+		System.out.print("Write your user name:");
+		player.setName(input.nextLine());
+		System.out.println("Type number: (Level)");
+		System.out.println("1 - easy");
+		System.out.println("2 - medium");
+		System.out.println("3 - hard");
+		int levelNumber = input.nextInt();
+		player.setLevel(levelNumber);
+
+		
+	}
 	
 	public static void main(String[] args) 
 	{
+
 		game = new BlockBreaker();
 		
 		
@@ -66,6 +84,14 @@ public class BlockBreaker implements ActionListener, KeyListener
             	game.GamePanel();
             }
         });
+
+		// TODO
+		
+		Scanner input = new Scanner(System.in);
+		
+		startGame();
+		
+
 	}
 	
 	@Override
@@ -79,4 +105,5 @@ public class BlockBreaker implements ActionListener, KeyListener
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {}
+	
 }
