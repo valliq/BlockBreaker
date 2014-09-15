@@ -6,8 +6,8 @@ import java.awt.Rectangle;
 
 public class Ball {
 	private static final int DIAMETER = 25;
-	int x = 0;
-	int y = 0;
+	int x = 400;
+	int y = 200;
 	int xa = 1;
 	int ya = 1;
 	private Game game;
@@ -31,6 +31,14 @@ public class Ball {
 		}
 		x = x + xa;
 		y = y + ya;
+		
+		for (int i=0; i<game.bricks.size(); i++)
+		{
+			if (game.bricks.get(i).getBounds().intersects(x,y,25,25))
+			{
+				game.bricks.remove(i);
+			}
+		}
 	}
 
 	private boolean collision() {

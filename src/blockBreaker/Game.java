@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,7 +18,7 @@ public class Game extends JPanel {
 	Ball ball = new Ball(this);
 	Racquet racquet = new Racquet(this);
 	private static double speed = 1.5; // connected with levels
-	Bricks[] bricks = Bricks.CreateBricks(30);
+	ArrayList<Bricks> bricks = Bricks.CreateBricks(30);
 	
 	public Game() {
 		addKeyListener(new KeyListener() {
@@ -40,8 +41,8 @@ public class Game extends JPanel {
 	}
 
 	private void move() {
-		ball.move();
-		racquet.move();
+			ball.move();
+			racquet.move();
 	}
 
 	@Override
@@ -52,8 +53,8 @@ public class Game extends JPanel {
 		ball.paint(g2d);
 		racquet.paint(g2d);
 
-		for (int i = 0; i < bricks.length; i++) {
-				bricks[i].paint(g2d);
+		for (int i = 0; i < bricks.size(); i++) {
+				bricks.get(i).paint(g2d);
 		}
 	
 	}

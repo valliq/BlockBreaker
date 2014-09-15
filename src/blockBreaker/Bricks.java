@@ -2,23 +2,25 @@ package blockBreaker;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 public class Bricks {
 
 	private int X;
 	private int Y;
-	private final int WIDTH = 40;
+	private final int WIDTH = 50;
 	private final int HEIGHT = 10;
 
-	public static Bricks[] CreateBricks(int numOfBricks) {
+	public static ArrayList<Bricks> CreateBricks(int numOfBricks) {
 		int rowOfBricks = 0;
 		int j = 0;
-		Bricks[] bricks = new Bricks[numOfBricks];
+		ArrayList<Bricks> bricks = new ArrayList<Bricks>();
 
-		for (int i = 0; i < bricks.length; i++) {
+		for (int i = 0; i < numOfBricks; i++) {
 
-			bricks[i] = new Bricks(50 * j + 5, rowOfBricks);
-			j++;
+			bricks.add(new Bricks(j, rowOfBricks));
+			j+=60;
 			
 			if (i % 8 == 0 && i != 0) {
 				j = 0;
@@ -33,6 +35,10 @@ public class Bricks {
 		this.X = x;
 		this.Y = y;
 	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(this.X,this.Y,WIDTH,HEIGHT);
+	}
 
 	public void paint(Graphics2D g) {
 		g.setColor(Color.YELLOW);
@@ -42,5 +48,6 @@ public class Bricks {
 	public void createBricks(int numOfBricks) {
 
 	}
+	
 
 }
