@@ -1,12 +1,13 @@
 package blockBreaker;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class Racquet {
-	private static final int Y = 330;
-	private static final int WIDTH = 60;
+	private static final int Y = 590;
+	private static final int WIDTH = 80;
 	private static final int HEIGHT = 10;
 	int x = 0;
 	int xa = 0;
@@ -22,6 +23,7 @@ public class Racquet {
 	}
 
 	public void paint(Graphics2D g) {
+		g.setColor(Color.RED);
 		g.fillRect(x, Y, WIDTH, HEIGHT);
 	}
 

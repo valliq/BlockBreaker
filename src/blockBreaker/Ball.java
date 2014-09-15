@@ -1,10 +1,11 @@
 package blockBreaker;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Ball {
-	private static final int DIAMETER = 30;
+	private static final int DIAMETER = 25;
 	int x = 0;
 	int y = 0;
 	int xa = 1;
@@ -37,7 +38,9 @@ public class Ball {
 	}
 
 	public void paint(Graphics2D g) {
+		g.setColor(Color.BLUE);
 		g.fillOval(x, y, DIAMETER, DIAMETER);
+		g.setColor(Color.BLACK);
 	}
 	
 	public Rectangle getBounds() {
