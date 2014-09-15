@@ -24,7 +24,7 @@ public class BlockBreaker {
 		System.out.println("3 - hard");
 		int levelNumber = input.nextInt();
 		player.setLevel(levelNumber);
-		
+
 		input.close();
 	}
 
@@ -35,7 +35,7 @@ public class BlockBreaker {
 		Scanner input = new Scanner(System.in);
 
 		startGame();
-		
+
 		input.close();
 	}
 

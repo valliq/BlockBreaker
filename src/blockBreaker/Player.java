@@ -15,7 +15,7 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	
+
 	public Integer getLives() {
 		return lives;
 	}
@@ -35,12 +35,12 @@ public class Player {
 	public void removeLive() {
 		this.lives -= 1;
 	}
-	
+
 	public void setLevel(Integer levelNumber)
 	{
 		switch(levelNumber)
 		{
-			case 1 : level = level.Easy; 
+			case 1 : level = level.Easy;
 				break;
 			case 2 : level = level.Medium;
 				break;
