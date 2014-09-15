@@ -34,9 +34,12 @@ public class Ball {
 		
 		for (int i=0; i<game.bricks.size(); i++)
 		{
-			if (game.bricks.get(i).getBounds().intersects(x,y,25,25))
+			if (game.bricks.get(i).getBounds().intersects(x,y,Ball.DIAMETER,Ball.DIAMETER))
 			{
+				// remove the brick hit by the ball
 				game.bricks.remove(i);
+				// add score points ???
+				game.player.scorePlus();
 			}
 		}
 	}
