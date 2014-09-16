@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class Racquet {
-	private static final int Y = 590;
+	private static final int Y = 565;
 	private static final int WIDTH = 80;
 	private static final int HEIGHT = 10;
 	int x = 100;
@@ -23,7 +23,7 @@ public class Racquet {
 	}
 
 	public void paint(Graphics2D g) {
-		g.setColor(Color.RED);
+		g.setColor(Color.GREEN);
 		g.fillRect(x, Y, WIDTH, HEIGHT);
 	}
 

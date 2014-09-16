@@ -7,21 +7,26 @@ public class Player {
 	private int score = 0;
 	private int lives = 3;
 	private Level level = Level.Easy;
+	private Game game;
+	
+	public Player(Game game) {
+		this.game= game;
+	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public Integer getLives() {
-		return lives;
+		return this.lives;
 	}
 
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 
 	public void scorePlus() {

@@ -15,6 +15,12 @@ public class Ball {
 	public Ball(Game game) {
 		this.game= game;
 	}
+	
+	void reset()
+	{
+		this.x = 400;
+		this.y = 200;
+	}
 
 	void move() {
 		if (x + xa < 0)
@@ -49,7 +55,7 @@ public class Ball {
 	}
 
 	public void paint(Graphics2D g) {
-		g.setColor(Color.BLUE);
+		g.setColor(Color.RED);
 		g.fillOval(x, y, DIAMETER, DIAMETER);
 		g.setColor(Color.BLACK);
 	}
