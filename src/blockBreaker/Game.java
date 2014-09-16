@@ -23,7 +23,8 @@ public class Game extends JPanel {
 	Ball ball = new Ball(this);
 	Racquet racquet = new Racquet(this);
 	Player player = new Player(this);
-	private static double speed = 1.5; // connected with levels
+	private double speed = 1.5; // connected with levels
+	int currentLevel = 1;
 	ArrayList<Bricks> bricks = Bricks.CreateBricks(49);
 	
 	public Game() {
@@ -86,6 +87,18 @@ public class Game extends JPanel {
 		JOptionPane.showMessageDialog(this, "Your score: "+this.player.getScore(), "You WIN !!!", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
 	}
+	
+	public void nextLevel()
+	{
+		JOptionPane.showMessageDialog(this, "Get ready for level: "+(this.currentLevel+1), "You completed level "+this.currentLevel, JOptionPane.YES_NO_OPTION);
+		this.currentLevel++;
+		this.ball.DIAMETER-=5;
+		this.racquet.WIDTH-=15;
+		this.speed+=0.5;
+		bricks = Bricks.CreateBricks(49);
+		ball.reset();
+		
+	}
 
 	public static void main(String[] args) throws InterruptedException {
 		dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -100,8 +113,8 @@ public class Game extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel statsPanel = new JPanel();
-		JLabel scoreLabel = new JLabel("SCORE: "+game.player.getScore()+" LIVES: "+game.player.getLives());
-		statsPanel.add(scoreLabel);
+		JLabel statsLabel = new JLabel("SCORE: "+game.player.getScore()+" LIVES: "+game.player.getLives());
+		statsPanel.add(statsLabel);
 		statsPanel.setSize(new Dimension(600, 30));
 		statsPanel.setBackground(Color.decode("#1691D9"));
 		frame.getContentPane().add(statsPanel, BorderLayout.SOUTH);
@@ -109,8 +122,8 @@ public class Game extends JPanel {
 		while (true) {
 			game.move();
 			game.repaint();
-			scoreLabel.setText("SCORE: "+game.player.getScore()+" LIVES: "+game.player.getLives());
-			Thread.sleep((long) (10.0 / speed));
+			statsLabel.setText("LEVEL: "+game.currentLevel+"   SCORE: "+game.player.getScore()+"  LIVES: "+game.player.getLives());
+			Thread.sleep((long) (10.0 / game.speed));
 		}
 	}
 

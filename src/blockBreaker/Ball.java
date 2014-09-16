@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Ball {
-	private static final int DIAMETER = 25;
+	int DIAMETER = 25;
 	int x = 400;
 	int y = 200;
 	int xa = 1;
@@ -43,7 +43,7 @@ public class Ball {
 		{
 			for (int i=0; i<game.bricks.size(); i++)
 			{
-				if (game.bricks.get(i).getBounds().intersects(x,y,Ball.DIAMETER,Ball.DIAMETER))
+				if (game.bricks.get(i).getBounds().intersects(x,y,game.ball.DIAMETER,game.ball.DIAMETER))
 				{
 					// remove the brick hit by the ball
 					game.bricks.remove(i);
@@ -55,7 +55,14 @@ public class Ball {
 		else
 		{
 			// all bricks are destroyed
-			game.winning();
+			if (game.currentLevel < 5)
+			{	// go to the next level
+				game.nextLevel();
+			} else {
+				// win the game!!!
+				game.winning();
+			}
+			
 		}
 		
 	}
