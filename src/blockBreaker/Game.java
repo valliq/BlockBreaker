@@ -80,6 +80,12 @@ public class Game extends JPanel {
 			ball.reset();
 		}
 	}
+	
+	public void winning()
+	{
+		JOptionPane.showMessageDialog(this, "Your score: "+this.player.getScore(), "You WIN !!!", JOptionPane.YES_NO_OPTION);
+		System.exit(ABORT);
+	}
 
 	public static void main(String[] args) throws InterruptedException {
 		dim = Toolkit.getDefaultToolkit().getScreenSize();

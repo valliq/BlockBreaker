@@ -38,16 +38,26 @@ public class Ball {
 		x = x + xa;
 		y = y + ya;
 		
-		for (int i=0; i<game.bricks.size(); i++)
+		// check if the ball hits a brick
+		if (game.bricks.size() > 1)
 		{
-			if (game.bricks.get(i).getBounds().intersects(x,y,Ball.DIAMETER,Ball.DIAMETER))
+			for (int i=0; i<game.bricks.size(); i++)
 			{
-				// remove the brick hit by the ball
-				game.bricks.remove(i);
-				// add score points ???
-				game.player.scorePlus();
+				if (game.bricks.get(i).getBounds().intersects(x,y,Ball.DIAMETER,Ball.DIAMETER))
+				{
+					// remove the brick hit by the ball
+					game.bricks.remove(i);
+					// add score points ???
+					game.player.scorePlus();
+				}
 			}
 		}
+		else
+		{
+			// all bricks are destroyed
+			game.winning();
+		}
+		
 	}
 
 	private boolean collision() {
