@@ -25,6 +25,7 @@ public class Game extends JPanel {
 	Player player = new Player(this);
 	private double speed = 1.5; // connected with levels
 	int currentLevel = 1;
+	boolean paused = false;
 	ArrayList<Bricks> bricks = Bricks.CreateBricks(49);
 	
 	public Game() {
@@ -41,6 +42,10 @@ public class Game extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				racquet.keyPressed(e);
+				if (e.getKeyCode() == KeyEvent.VK_SPACE)
+				{
+					pause();
+				}
 			}
 		});
 		setFocusable(true);
@@ -65,6 +70,12 @@ public class Game extends JPanel {
 				bricks.get(i).paint(g2d);
 		}
 	
+	}
+	
+	public void pause()
+	{   this.paused = true;
+		JOptionPane.showMessageDialog(this, "Press SPACE (or ENTER) to continue playing..", "PAUSED", JOptionPane.YES_NO_OPTION);
+		this.paused = false;
 	}
 
 	public void gameOver() {
@@ -119,12 +130,14 @@ public class Game extends JPanel {
 		statsPanel.setBackground(Color.decode("#1691D9"));
 		frame.getContentPane().add(statsPanel, BorderLayout.SOUTH);
 		
-		while (true) {
-			game.move();
-			game.repaint();
-			statsLabel.setText("LEVEL: "+game.currentLevel+"   SCORE: "+game.player.getScore()+"  LIVES: "+game.player.getLives());
-			Thread.sleep((long) (10.0 / game.speed));
+		while (true)
+		{
+				game.move();
+				game.repaint();
+				statsLabel.setText("LEVEL: "+game.currentLevel+" <==> SCORE: "+game.player.getScore()+" <==> LIVES: "+game.player.getLives());
+				Thread.sleep((long) (10.0 / game.speed));
 		}
+		
 	}
-
+	
 }

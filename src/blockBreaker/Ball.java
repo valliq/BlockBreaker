@@ -23,48 +23,51 @@ public class Ball {
 	}
 
 	void move() {
-		if (x + xa < 0)
-			xa = 1;
-		if (x + xa > game.getWidth() - DIAMETER)
-			xa = -1;
-		if (y + ya < 0)
-			ya = 1;
-		if (y + ya > game.getHeight() - DIAMETER)
-			game.gameOver();
-		if (collision()){
-			ya = -1;
-			y = game.racquet.getTopY() - DIAMETER;
-		}
-		x = x + xa;
-		y = y + ya;
 		
-		// check if the ball hits a brick
-		if (game.bricks.size() > 1)
+		if (!game.paused)
 		{
-			for (int i=0; i<game.bricks.size(); i++)
+			if (x + xa < 0)
+				xa = 1;
+			if (x + xa > game.getWidth() - DIAMETER)
+				xa = -1;
+			if (y + ya < 0)
+				ya = 1;
+			if (y + ya > game.getHeight() - DIAMETER)
+				game.gameOver();
+			if (collision()){
+				ya = -1;
+				y = game.racquet.getTopY() - DIAMETER;
+			}
+			x = x + xa;
+			y = y + ya;
+			
+			// check if the ball hits a brick
+			if (game.bricks.size() > 1)
 			{
-				if (game.bricks.get(i).getBounds().intersects(x,y,game.ball.DIAMETER,game.ball.DIAMETER))
+				for (int i=0; i<game.bricks.size(); i++)
 				{
-					// remove the brick hit by the ball
-					game.bricks.remove(i);
-					// add score points ???
-					game.player.scorePlus();
+					if (game.bricks.get(i).getBounds().intersects(x,y,game.ball.DIAMETER,game.ball.DIAMETER))
+					{
+						// remove the brick hit by the ball
+						game.bricks.remove(i);
+						// add score points ???
+						game.player.scorePlus();
+					}
 				}
 			}
-		}
-		else
-		{
-			// all bricks are destroyed
-			if (game.currentLevel < 5)
-			{	// go to the next level
-				game.nextLevel();
-			} else {
-				// win the game!!!
-				game.winning();
+			else
+			{
+				// all bricks are destroyed
+				if (game.currentLevel < 5)
+				{	// go to the next level
+					game.nextLevel();
+				} else {
+					// win the game!!!
+					game.winning();
+				}
+				
 			}
-			
 		}
-		
 	}
 
 	private boolean collision() {
