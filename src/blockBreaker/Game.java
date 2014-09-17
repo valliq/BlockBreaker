@@ -79,7 +79,7 @@ public class Game extends JPanel {
 	}
 
 	public void gameOver() {
-		if (this.player.getLives() == 0)
+		if (this.player.getLives() == 1)
 		{
 			JOptionPane.showMessageDialog(this, "Your score: "+this.player.getScore(), "Game Over", JOptionPane.YES_NO_OPTION);
 			System.exit(ABORT);
