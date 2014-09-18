@@ -7,17 +7,17 @@ import java.awt.event.KeyEvent;
 
 public class Racquet {
 	private static final int Y = 565;
-	int WIDTH = 80;
+	protected int WIDTH = 80;
 	private static final int HEIGHT = 10;
-	int x = 100;
-	int xa = 0;
+	private int x = 100;
+	private int xa = 0;
 	private Game game;
 
-	public Racquet(Game game) {
+	protected Racquet(Game game) {
 		this.game = game;
 	}
 
-	public void move() {
+	protected void move() {
 		if (x + xa > 0 && x + xa < game.getWidth() - WIDTH)
 			x = x + xa;
 	}
@@ -42,7 +42,7 @@ public class Racquet {
 		return new Rectangle(x, Y, WIDTH, HEIGHT);
 	}
 
-	public int getTopY() {
+	protected int getTopY() {
 		return Y;
 	}
 }

@@ -43,11 +43,6 @@ public class Bricks {
 	public void paint(Graphics2D g) {
 		g.setColor(Color.YELLOW);
 		g.fillRect(X, Y, WIDTH, HEIGHT);
-	}
-
-	public void createBricks(int numOfBricks) {
-
-	}
-	
+	}	
 
 }

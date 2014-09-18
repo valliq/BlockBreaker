@@ -19,16 +19,16 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Game extends JPanel {
 
-	public static Dimension dim;
+	private static Dimension dim;
+	private double speed = 1.5;
+	protected int currentLevel = 1;
+	protected boolean paused = false;
 	Ball ball = new Ball(this);
 	Racquet racquet = new Racquet(this);
 	Player player = new Player();
-	private double speed = 1.5; // connected with levels
-	int currentLevel = 1;
-	boolean paused = false;
 	ArrayList<Bricks> bricks = Bricks.CreateBricks(49);
 	
-	public Game() {
+	protected Game() {
 		addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -72,13 +72,13 @@ public class Game extends JPanel {
 	
 	}
 	
-	public void pause()
+	private void pause()
 	{   this.paused = true;
 		JOptionPane.showMessageDialog(this, "Press SPACE (or ENTER) to continue playing..", "PAUSED", JOptionPane.YES_NO_OPTION);
 		this.paused = false;
 	}
 
-	public void gameOver() {
+	protected void gameOver() {
 		if (this.player.getLives() == 1)
 		{
 			JOptionPane.showMessageDialog(this, "Your score: "+this.player.getScore(), "Game Over", JOptionPane.YES_NO_OPTION);
@@ -93,13 +93,13 @@ public class Game extends JPanel {
 		}
 	}
 	
-	public void winning()
+	protected void winning()
 	{
 		JOptionPane.showMessageDialog(this, "Your score: "+this.player.getScore(), "You WIN !!!", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
 	}
 	
-	public void nextLevel()
+	protected void nextLevel()
 	{
 		JOptionPane.showMessageDialog(this, "Get ready for level: "+(this.currentLevel+1), "You completed level "+this.currentLevel, JOptionPane.YES_NO_OPTION);
 		this.currentLevel++;
@@ -113,6 +113,7 @@ public class Game extends JPanel {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
+		
 		dim = Toolkit.getDefaultToolkit().getScreenSize();
 		JFrame frame = new JFrame("BlockBreaker by Team Huckleberry");
 		Game game = new Game();
@@ -133,10 +134,10 @@ public class Game extends JPanel {
 		
 		while (true)
 		{
-				game.move();
-				game.repaint();
-				statsLabel.setText("LEVEL: "+game.currentLevel+" <==> SCORE: "+game.player.getScore()+" <==> LIVES: "+game.player.getLives());
-				Thread.sleep((long) (10.0 / game.speed));
+			game.move();
+			game.repaint();
+			statsLabel.setText("LEVEL: "+game.currentLevel+" <==> SCORE: "+game.player.getScore()+" <==> LIVES: "+game.player.getLives());
+			Thread.sleep((long) (10.0 / game.speed));
 		}
 		
 	}

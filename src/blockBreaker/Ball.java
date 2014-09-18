@@ -5,24 +5,24 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Ball {
-	int DIAMETER = 25;
-	int x = 400;
-	int y = 200;
-	int xa = 1;
-	int ya = 1;
+	protected int DIAMETER = 25;
+	private int x = 400;
+	private int y = 200;
+	private int xa = 1;
+	private int ya = 1;
 	private Game game;
 
-	public Ball(Game game) {
-		this.game= game;
+	protected Ball(Game game) {
+		this.game = game;
 	}
 	
-	void reset()
+	protected void reset()
 	{
 		this.x = 400;
 		this.y = 200;
 	}
 
-	void move() {
+	protected void move() {
 		
 		if (!game.paused)
 		{
