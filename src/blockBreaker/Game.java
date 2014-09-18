@@ -22,7 +22,7 @@ public class Game extends JPanel {
 	public static Dimension dim;
 	Ball ball = new Ball(this);
 	Racquet racquet = new Racquet(this);
-	Player player = new Player(this);
+	Player player = new Player();
 	private double speed = 1.5; // connected with levels
 	int currentLevel = 1;
 	boolean paused = false;
@@ -106,6 +106,7 @@ public class Game extends JPanel {
 		this.ball.DIAMETER-=5;
 		this.racquet.WIDTH-=15;
 		this.speed+=0.5;
+		player.addLive();
 		bricks = Bricks.CreateBricks(49);
 		ball.reset();
 		
